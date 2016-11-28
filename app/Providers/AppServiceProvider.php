@@ -10,11 +10,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
+     * @param $setting
      * @return void
      */
-    public function boot()
+    public function boot(Setting $setting)
     {
-
+        view()->share('settings', $setting->getList());
     }
 
     /**
@@ -24,7 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        Setting $setting
-//        view()->share('settings', $setting->getList());
     }
 }
