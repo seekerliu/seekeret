@@ -32,6 +32,7 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->unique()->word,
+        'stick' => $faker->boolean,
     ];
 });
 

@@ -16,6 +16,11 @@ class CategoriesRepository extends Repository {
         return 'App\Category';
     }
 
+    public function getAllWithWebsites()
+    {
+        return $this->model->with('websites')->get();
+    }
+
     public function getDropDownList()
     {
         $categories = $this->all();

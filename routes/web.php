@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
 
 Route::group(['prefix' => 'console'], function () {
     Route::get('home', 'HomeController@index');
+    Route::get('seo', 'HomeController@seo');
+    Route::put('seo', 'HomeController@updateSeo');
+
     Route::resource('categories', 'CategoryController');
     Route::get('categories/{category}/websites', 'CategoryController@websites');
     Route::resource('websites', 'WebsiteController');

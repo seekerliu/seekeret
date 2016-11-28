@@ -12,7 +12,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'order'
+        'name', 'order', 'stick'
     ];
 
     public function websites()
