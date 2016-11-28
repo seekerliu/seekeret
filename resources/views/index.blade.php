@@ -18,6 +18,9 @@
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
             margin-bottom: 20px;
         }
+        .header a {
+            color:#333;
+        }
         .container { width:70%; margin:0 auto 20px;
             padding:10px 15px;
         }
@@ -98,7 +101,7 @@
     </style>
 </head>
 <body>
-    <div class="header"><b>SEEKER</b>ET</div>
+    <div class="header"><a href="/"><b>SEEKER</b>ET</a></div>
     <div class="container">
         <div class="box search-box warning">
         </div>
