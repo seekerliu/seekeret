@@ -22,6 +22,8 @@ class Website extends Model
 
     public function getLogoAttribute($path)
     {
-        return asset(\Storage::url($path));
+        if(!empty($path)) {
+            return asset(\Storage::url($path));
+        }
     }
 }
