@@ -19,4 +19,9 @@ class Website extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function getLogoAttribute($path)
+    {
+        return asset(\Storage::url($path));
+    }
 }

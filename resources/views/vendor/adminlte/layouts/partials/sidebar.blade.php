@@ -33,10 +33,9 @@
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="/console"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="/console/frequentlyUsedWebsites"><i class='fa fa-link'></i> <span>Frequently Used Websites</span></a></li>
-            <li><a href="/console/websites"><i class='fa fa-link'></i> <span>Websites</span></a></li>
-            <li><a href="/console/categories"><i class='fa fa-link'></i> <span>Categories</span></a></li>
+            <li><a href="/console/home"><i class='fa fa-dashboard'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            <li><a href="/console/websites"><i class='fa fa-chrome'></i> <span>Websites</span></a></li>
+            <li><a href="/console/categories"><i class='fa fa-pie-chart'></i> <span>Categories</span></a></li>
             <li><a href="/console/seo"><i class='fa fa-link'></i> <span>Seo</span></a></li>
 
         </ul><!-- /.sidebar-menu -->

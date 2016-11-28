@@ -9,6 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Repositories\CategoriesRepository as Category;
+use App\Repositories\WebsitesRepository as Website;
 
 /**
  * Class HomeController
@@ -16,23 +18,29 @@ use Illuminate\Http\Request;
  */
 class HomeController extends Controller
 {
+    private $category;
+    private $website;
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * WebsiteController constructor.
+     * @param Category $category
+     * @param Website $website
      */
-    public function __construct()
+    public function __construct(Category $category, Website $website)
     {
         $this->middleware('auth');
+        $this->category = $category;
+        $this->website = $website;
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return Response
      */
     public function index()
     {
-        return view('adminlte::home');
+        $count['website'] = $this->website->all()->count();
+        $count['category'] = $this->category->all()->count();
+        return view('console/home')->with(compact('count'));
     }
 }

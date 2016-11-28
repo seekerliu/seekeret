@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\CategoriesRepository as Category;
+use App\Repositories\WebsitesRepository as Website;
+
 class CategoryController extends Controller
 {
     private $category;
+    private $website;
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * CategoryController constructor.
+     * @param Category $category
+     * @param Website $website
      */
-    public function __construct(Category $category)
+    public function __construct(Category $category, Website $website)
     {
         $this->middleware('auth');
         $this->category = $category;
+        $this->website = $website;
     }
 
     public function index()
@@ -52,5 +57,12 @@ class CategoryController extends Controller
     {
         $this->category->delete($id);
         return redirect()->back();
+    }
+
+    public function websites($id)
+    {
+        $category = $this->category->find($id);
+        $websites = $this->website->getPaginatedListByCategoryId($id);
+        return view('console/category/websites')->with(compact('category', 'websites'));
     }
 }

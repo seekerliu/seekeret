@@ -10,10 +10,16 @@ use Bosnadev\Repositories\Contracts\RepositoryInterface;
 use Bosnadev\Repositories\Eloquent\Repository;
 
 class CategoriesRepository extends Repository {
-    private $perPage = 25;
+    private $perPage = 10;
 
     public function model() {
         return 'App\Category';
+    }
+
+    public function getDropDownList()
+    {
+        $categories = $this->all();
+        return $categories->pluck('name', 'id')->all();
     }
 
     public function getPaginatedList()

@@ -20,5 +20,4 @@ Route::group(['prefix' => 'console'], function () {
     Route::resource('categories', 'CategoryController');
     Route::get('categories/{category}/websites', 'CategoryController@websites');
     Route::resource('websites', 'WebsiteController');
-    Route::get('frequentlyUsedWebsites', 'WebsiteController@frequentlyUsedWebsites');
 });
