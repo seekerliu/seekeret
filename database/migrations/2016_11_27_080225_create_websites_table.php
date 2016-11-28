@@ -17,7 +17,7 @@ class CreateWebsitesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('link');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->integer('category_id')->unsigned();
             $table->integer('order')->unsigned()->default(0);
             $table->timestamps();
