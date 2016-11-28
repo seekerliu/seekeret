@@ -22,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(Setting $setting)
+    public function register()
     {
-        view()->share('settings', $setting->getList());
+//        Setting $setting
+//        view()->share('settings', $setting->getList());
     }
 }
