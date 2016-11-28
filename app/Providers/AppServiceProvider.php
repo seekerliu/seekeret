@@ -12,9 +12,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Setting $setting)
+    public function boot()
     {
-        view()->share('settings', $setting->getList());
+
     }
 
     /**
@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(Setting $setting)
     {
-        //
+        view()->share('settings', $setting->getList());
     }
 }
