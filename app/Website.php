@@ -12,7 +12,7 @@ class Website extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'link', 'logo', 'category_id'
+        'name', 'link', 'logo', 'category_id', 'order'
     ];
 
     public function category()
