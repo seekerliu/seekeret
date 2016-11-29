@@ -124,6 +124,7 @@
         }
         .recommend {
             overflow:hidden;
+            padding:10px;
         }
         .recommend li {
             display: inline-block;
