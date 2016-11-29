@@ -21,6 +21,13 @@ class IndexController extends Controller
     public function index()
     {
         $categories = $this->category->getAllWithWebsites();
-        return view('index')->with(compact('categories'));
+        $recommend = null;
+        foreach($categories as $key => $category) {
+            if($category->name == "Recommend") {
+                $recommend = $category;
+                unset($categories[$key]);
+            }
+        }
+        return view('index')->with(compact('categories', 'recommend'));
     }
 }
