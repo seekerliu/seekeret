@@ -19,12 +19,13 @@
         input,button,select,textarea{outline:none}
         .header {
             text-align: center;
-            background: #f5f5f5;
-            height:50px;
-            line-height:50px;
-            font-size:20px;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            margin-bottom: 30px;
+            /*background: #f5f5f5;*/
+            padding-top:10px;
+            height:80px;
+            line-height:80px;
+            font-size:36px;
+            /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+            /*margin-bottom: 30px;*/
         }
         .header a {
             color:#333;
@@ -35,6 +36,18 @@
         .footer {
             text-align:center;
             color:#333;
+        }
+        .fixed {
+            position:fixed;
+            width:100%;
+            padding:0;
+            top:0;
+            background:#fff;
+            z-index:9;
+        }
+        .fixed .search-body {
+            margin:0 auto;
+            width:830px;
         }
         .websites dl {
             overflow:hidden;
@@ -189,7 +202,7 @@
 <body>
     <div class="header"><a href="/"><b>SEEKER</b>ET</a></div>
 
-    <div class="container">
+    <div id="search" class="container">
         <div class="box search-box">
             <div class="search-body">
                 <form method="get" action="http://www.google.com/search">
@@ -242,6 +255,86 @@
         &copy;2016 seekeret.com
     </div>
 </body>
+<script type="text/javascript">
+
+    window.onscroll = function(){
+        var t = document.documentElement.scrollTop || document.body.scrollTop;
+        var top_div = document.getElementById("search");
+        if( t >= 90 ) {
+            addClass.call(top_div, "fixed");
+        } else {
+            removeClass.call(top_div, "fixed");
+        }
+    }
+
+    // dom 元素处理
+    // 获取dom属性
+    function getAttr( attr )
+    {
+        return this.getAttribute( attr );
+    }
+    // 设置属性
+    function setAttr( attr, val )
+    {
+        this.setAttribute( attr, val );
+
+        return this;
+    };
+    // 编辑元素class
+    function editClass( mode, data )
+    {
+        var cls = getAttr.call( this, "class" ) || '';
+
+        var arr = cls.split( /\s+/ );
+
+        switch( mode )
+        {
+            case "add":
+
+                return setAttr.call( this, "class", cls + " " + data );
+
+                break;
+
+            case "remove":
+
+                for( var i = 0; i < arr.length; i++ )
+                {
+                    if( arr[ i ] == data )
+                    {
+                        arr.splice( i, 1 );
+                    }
+                };
+
+                var cls = arr.join( " " );
+
+                cls = cls.replace( /^\s|\s$/g, "" );
+
+                // cls = cls == "" ? null : cls;
+
+                return setAttr.call( this, "class", cls );
+
+                break;
+
+            default:
+
+                console.log( "EditClass mode error!" );
+
+                return this;
+
+                break;
+        }
+    }
+    // 添加class
+    function addClass( cls )
+    {
+        return editClass.call( this, "add", cls );
+    }
+    // 删除class
+    function removeClass( cls )
+    {
+        return editClass.call( this, "remove", cls );
+    }
+</script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
