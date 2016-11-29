@@ -205,9 +205,9 @@
     <div id="search" class="container">
         <div class="box search-box">
             <div class="search-body">
-                <form method="get" action="http://www.google.com/search">
+                <form method="get" action="http://www.google.com/search" target="_blank">
                     <div class="search-logo">
-                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
+                        <img alt="Google" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
                     </div>
                     <div class="search-text">
                         <input type="text" name="q">
@@ -217,7 +217,7 @@
                     </div>
                     {{--<input type=hidden name=ie value=GB2312>--}}
                     {{--<input type=hidden name=oe value=GB2312>--}}
-                    <input type=hidden name=hl value=zh-CN>
+                    <input type="hidden" name="hl" value="en">
                 </form>
             </div>
         </div>
@@ -260,7 +260,7 @@
     window.onscroll = function(){
         var t = document.documentElement.scrollTop || document.body.scrollTop;
         var top_div = document.getElementById("search");
-        if( t >= 90 ) {
+        if( t > 100 ) {
             addClass.call(top_div, "fixed");
         } else {
             removeClass.call(top_div, "fixed");
