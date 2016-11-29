@@ -16,6 +16,7 @@
         ul, li {
             list-style: none;
         }
+        input,button,select,textarea{outline:none}
         .header {
             text-align: center;
             background: #f5f5f5;
@@ -23,12 +24,12 @@
             line-height:50px;
             font-size:20px;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .header a {
             color:#333;
         }
-        .container { width:880px; margin:0 auto 20px;
+        .container { width:880px; margin:0 auto 10px;
             padding:10px 15px;
         }
         .footer {
@@ -127,12 +128,86 @@
         .recommend li {
             display: inline-block;
             float:left;
+            height:38px;
+        }
+        .search-body {
+            overflow:hidden;
+            padding:10px 25px;
+        }
+        .search-logo, .search-text, .search-button {
+            float:left;
+            height:38px;
+        }
+        .search-logo {
+            padding-top:4px;
+            height:34px;
+            margin-right:15px;
+        }
+        .search-logo img {
+            width:100px;
+            height:auto;
+        }
+        .search-text {
+            width:600px;
+            padding:6px;
+            border: 1px solid #d2d6de;
+            position:relative;
+            height:24px;
+        }
+        .search-text input {
+            width:600px;
+            position:absolute;
+            z-index:6;
+            left:6px;
+            top:6px;
+            height:26px;
+            line-height:26px;
+            padding:0;
+            margin:0;
+            font-size:14px;
+            border:0 none;
+        }
+        .search-button input {
+            width: 100px;
+            height: 38px;
+            color: #fff;
+            letter-spacing: 1px;
+            background: #3385ff;
+            border:0 none;
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+            font-size:16px;
+            cursor:pointer;
+        }
+        .search-button input:hover {
+            background:#317ef3;
+            box-shadow:1px 1px 1px #ccc;
         }
     </style>
 </head>
 <body>
     <div class="header"><a href="/"><b>SEEKER</b>ET</a></div>
 
+    <div class="container">
+        <div class="box search-box">
+            <div class="search-body">
+                <form method="get" action="http://www.google.com/search">
+                    <div class="search-logo">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
+                    </div>
+                    <div class="search-text">
+                        <input type="text" name="q">
+                    </div>
+                    <div class="search-button">
+                        <input type="submit" name="btnK" value="Search">
+                    </div>
+                    {{--<input type=hidden name=ie value=GB2312>--}}
+                    {{--<input type=hidden name=oe value=GB2312>--}}
+                    <input type=hidden name=hl value=zh-CN>
+                </form>
+            </div>
+        </div>
+    </div>
     @if(!empty($recommend))
     <div class="container">
         <div class="box websites warning">
