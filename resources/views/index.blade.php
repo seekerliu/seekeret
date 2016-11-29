@@ -254,67 +254,63 @@
     <div class="container footer">
         &copy;2016 seekeret.com
     </div>
+    <script type="text/javascript">
+    //    window.onload = function(){
+            menuFixed('search');
+    //    }
+
+        function menuFixed(id){
+            var obj = document.getElementById(id);
+            var _getHeight = obj.offsetTop;
+
+            window.onscroll = function(){
+                changePos(id,_getHeight);
+            }
+        }
+        function changePos(id,height){
+            var obj = document.getElementById(id);
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if(scrollTop < height){
+                removeClass(obj, "fixed");
+            }else{
+                addClass(obj, "fixed");
+            }
+        }
+
+        function hasClass(obj, cls) {
+            return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+        }
+
+        function addClass(obj, cls) {
+            if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+        }
+
+        function removeClass(obj, cls) {
+            if (hasClass(obj, cls)) {
+                var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                obj.className = obj.className.replace(reg, ' ');
+                obj.className = obj.className.replace(' ', '');
+            }
+        }
+
+        function toggleClass(obj,cls){
+            if(hasClass(obj,cls)){
+                removeClass(obj, cls);
+            }else{
+                addClass(obj, cls);
+            }
+        }
+    </script>
+    @if(env('APP_ENV')=='production')
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86278584-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+    @endif
 </body>
-<script type="text/javascript">
-//    window.onload = function(){
-        menuFixed('search');
-//    }
-
-    function menuFixed(id){
-        var obj = document.getElementById(id);
-        var _getHeight = obj.offsetTop;
-
-        window.onscroll = function(){
-            changePos(id,_getHeight);
-        }
-    }
-    function changePos(id,height){
-        var obj = document.getElementById(id);
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if(scrollTop < height){
-            removeClass(obj, "fixed");
-        }else{
-            addClass(obj, "fixed");
-        }
-    }
-
-    function hasClass(obj, cls) {
-        return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-    }
-
-    function addClass(obj, cls) {
-        if (!this.hasClass(obj, cls)) obj.className += " " + cls;
-    }
-
-    function removeClass(obj, cls) {
-        if (hasClass(obj, cls)) {
-            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-            obj.className = obj.className.replace(reg, ' ');
-            obj.className = obj.className.replace(' ', '');
-        }
-    }
-
-    function toggleClass(obj,cls){
-        if(hasClass(obj,cls)){
-            removeClass(obj, cls);
-        }else{
-            addClass(obj, cls);
-        }
-    }
-
-    function toggleClassTest(){
-        var obj = document. getElementById('test');
-        toggleClass(obj,"testClass");
-    }
-</script>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-86278584-3', 'auto');
-    ga('send', 'pageview');
-
-</script>
 </html>
