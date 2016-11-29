@@ -42,7 +42,7 @@
             width:100%;
             padding:0;
             top:0;
-            background:#fff;
+            /*background:#fff;*/
             z-index:9;
         }
         .fixed .search-body {
@@ -256,83 +256,55 @@
     </div>
 </body>
 <script type="text/javascript">
+//    window.onload = function(){
+        menuFixed('search');
+//    }
 
-    window.onscroll = function(){
-        var t = document.documentElement.scrollTop || document.body.scrollTop;
-        var top_div = document.getElementById("search");
-        if( t > 100 ) {
-            addClass.call(top_div, "fixed");
-        } else {
-            removeClass.call(top_div, "fixed");
+    function menuFixed(id){
+        var obj = document.getElementById(id);
+        var _getHeight = obj.offsetTop;
+
+        window.onscroll = function(){
+            changePos(id,_getHeight);
+        }
+    }
+    function changePos(id,height){
+        var obj = document.getElementById(id);
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop < height){
+            removeClass(obj, "fixed");
+        }else{
+            addClass(obj, "fixed");
         }
     }
 
-    // dom 元素处理
-    // 获取dom属性
-    function getAttr( attr )
-    {
-        return this.getAttribute( attr );
+    function hasClass(obj, cls) {
+        return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
     }
-    // 设置属性
-    function setAttr( attr, val )
-    {
-        this.setAttribute( attr, val );
 
-        return this;
-    };
-    // 编辑元素class
-    function editClass( mode, data )
-    {
-        var cls = getAttr.call( this, "class" ) || '';
+    function addClass(obj, cls) {
+        if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+    }
 
-        var arr = cls.split( /\s+/ );
-
-        switch( mode )
-        {
-            case "add":
-
-                return setAttr.call( this, "class", cls + " " + data );
-
-                break;
-
-            case "remove":
-
-                for( var i = 0; i < arr.length; i++ )
-                {
-                    if( arr[ i ] == data )
-                    {
-                        arr.splice( i, 1 );
-                    }
-                };
-
-                var cls = arr.join( " " );
-
-                cls = cls.replace( /^\s|\s$/g, "" );
-
-                // cls = cls == "" ? null : cls;
-
-                return setAttr.call( this, "class", cls );
-
-                break;
-
-            default:
-
-                console.log( "EditClass mode error!" );
-
-                return this;
-
-                break;
+    function removeClass(obj, cls) {
+        if (hasClass(obj, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            obj.className = obj.className.replace(reg, ' ');
+            obj.className = obj.className.replace(' ', '');
         }
     }
-    // 添加class
-    function addClass( cls )
-    {
-        return editClass.call( this, "add", cls );
+
+    function toggleClass(obj,cls){
+        if(hasClass(obj,cls)){
+            removeClass(obj, cls);
+        }else{
+            addClass(obj, cls);
+        }
     }
-    // 删除class
-    function removeClass( cls )
-    {
-        return editClass.call( this, "remove", cls );
+
+    function toggleClassTest(){
+        var obj = document. getElementById('test');
+        toggleClass(obj,"testClass");
     }
 </script>
 <script>
