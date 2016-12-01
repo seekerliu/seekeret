@@ -3,19 +3,16 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\SettingsRepository as Setting;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
      *
-     * @param $setting
      * @return void
      */
-    public function boot(Setting $setting)
+    public function boot()
     {
-        view()->share('settings', $setting->getList());
     }
 
     /**
